@@ -1,3 +1,0 @@
-git config user.name "Saba101"
-git config user.email "sabaamin2468@gmail.com"
-git remote add origin https://github.com/Saba101/GoMetadataSyncronizer
