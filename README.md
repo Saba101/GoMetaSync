@@ -1,3 +1,7 @@
+![Go Version](https://img.shields.io/badge/Go-1.23+-00ADD8?logo=go)
+![License](https://img.shields.io/badge/license-MIT-green)
+![Version](https://img.shields.io/github/v/tag/Saba101/GoMetaSync?label=release)
+
 # 🚀 GoMetaSync
 
 > **GoMetaSync** is an open-source tool written in Go that automatically detects database schema drift and keeps your Go structs in sync with live PostgreSQL databases.  
@@ -6,12 +10,32 @@
 ---
 
 ## Tech Stack
+
 - Language: Go 1.23+
 - Database: PostgreSQL
 - Serialization: JSON, YAML
 <!-- - Packages:
     pgx — PostgreSQL driver
 yaml.v3 — YAML parsing -->
+
+---
+
+## ⚡ Quick Start
+
+```bash
+# 1. Install CLI
+go install github.com/Saba101/GoMetaSync/cmd/gometasync@v1.0.0
+
+# 2. Configure connection (edit configs/dev.yml)
+# 3. Generate snapshot
+gometasync --mode snapshot --config configs/dev.yml --new snapshots/dev.json
+# 4. Detect drift
+gometasync --mode diff --old snapshots/dev.json --new snapshots/dev2.json
+# 5. Generate Go structs
+gometasync --mode generate --new snapshots/dev2.json --out generated_models
+```
+
+---
 
 ---
 
@@ -55,14 +79,17 @@ This makes GoMetaSync an excellent fit for:
 
 ❌ Column dropped: datasource_server.public.data_source.secret_key
 
-
 ---
 
 ## ✅ Project Structure
 
 GoMetaSync/
 
-├── cmd/main.go # CLI entrypoint
+GoMetaSync/
+
+├── cmd/
+│ └── gometasync/
+│ └── main.go
 
 ├── internal/
 
@@ -106,54 +133,96 @@ databases:
 
 ---
 
-## Installation
+## 🧱 Installation
 
-### 1️. Clone the repository
+### Option 1 — Install via Go (Recommended)
+
+GoMetaSync can now be installed globally as a CLI tool:
+
+```bash
+go install github.com/Saba101/GoMetaSync/cmd/gometasync@v1.0.1
+```
+
+This will download and build the latest tagged version from GitHub.
+Once installed, you can run it from anywhere:
+
+```
+gometasync --help
+```
+
+### Option 2 — Build from Source (For Contributors)
+
+If you want to run or modify the code manually:
+
 ```bash
 git clone https://github.com/Saba101/GoMetaSync.git
 cd GoMetaSync
-```
-
-### 2️. Install dependencies
-```
 go mod tidy
+go run cmd/gometasync/main.go --help
 ```
 
-### 3️. Build the CLI
-```
-go build -o metasynk cmd/main.go
-./metasynk --help
-```
+## 🧭 Usage Examples
 
----
-
-## 🧭 Usage
 ### 1. Generate a Snapshot of Your Database
+
+#### Using package:
+
 ```
-go run cmd/main.go \
+gometasync --mode snapshot \
+  --config configs/dev.yml \
+  --new snapshots/dev-1.json
+```
+
+#### Using CLI:
+```
+go run cmd/gometasync/main.go \
   --mode snapshot \
   --config configs/dev.yml \
   --new snapshots/dev-1.json
 ```
 
 ### 2. Detect Schema Drift
+
+#### Using package:
+
 ```
-go run cmd/main.go \
+gometasync --mode diff \
+  --old snapshots/dev-1.json \
+  --new snapshots/dev-2.json
+```
+
+#### Using CLI:
+
+```
+go run cmd/gometasync/main.go \
   --mode diff \
   --old snapshots/dev-1.json \
   --new snapshots/dev-2.json
 ```
 
 ### 3. Generate Go Structs
+
+#### Using package:
+
 ```
-go run cmd/main.go \
+gometasync --mode generate \
+  --new snapshots/dev-2.json \
+  --out generated_models
+```
+
+#### Using CLI:
+
+```
+go run cmd/gometasync/main.go \
   --mode generate \
   --new snapshots/dev-2.json \
   --out generated_models
 ```
 
 ---
+
 ## 🧪 Example Generated Struct
+
 ```go
 // Code generated automatically. DO NOT EDIT.
 package generated_models
@@ -170,6 +239,7 @@ type Users struct {
 ---
 
 ## 🤝 Contributions
+
 1. Pull requests, ideas, and feedback are welcome!
 2. Fork the repository
 3. Create a feature branch (feature/your-idea)
@@ -179,17 +249,22 @@ type Users struct {
 ---
 
 ## 🌟 Acknowledgements
+
 - Inspired by schema management techniques in Superset, Metabase, and dbt
 - Built for Go open-source community
 
-----
+---
 
 ## 📫 Connect
+
 If you find this useful, please ⭐ the repo and share feedback!
 
-For collaboration or feature ideas, reach out on LinkedIn: Saba Amin
+For collaboration or feature ideas, reach out on LinkedIn: [Saba Amin](https://www.linkedin.com/in/saba-amin-61635519b)
 
 ---
 
 ## 🔖 Version
+
 GoMetaSync **v1.0.0** — Initial public release (Schema Drift Detection & Struct Generation)
+
+---

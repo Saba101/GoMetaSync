@@ -8,7 +8,7 @@ import (
 	"strings"
 	"text/template"
 
-	"GoMetaSync.com/internal/models"
+	"github.com/Saba101/GoMetaSync/internal/models"
 )
 
 var fileTmpl = template.Must(template.New("file").Parse(`// Code generated automatically. DO NOT EDIT.

@@ -3,7 +3,7 @@ package snapshot
 import (
 	"fmt"
 
-	"GoMetaSync.com/internal/models"
+	"github.com/Saba101/GoMetaSync/internal/models"
 )
 
 func Diff(oldSnap, newSnap *models.Snapshot) {

@@ -1,4 +1,4 @@
-module GoMetaSync.com
+module github.com/Saba101/GoMetaSync
 
 go 1.23.0
 
