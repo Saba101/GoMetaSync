@@ -136,16 +136,21 @@ databases:
 ## 🧱 Installation
 
 ### Option 1 — Install via Go (Recommended)
-
 GoMetaSync can now be installed globally as a CLI tool:
 
+#### Latest Release:
 ```bash
-go install github.com/Saba101/GoMetaSync/cmd/gometasync@v1.1.0
+go install github.com/Saba101/GoMetaSync/cmd/gometasync@latest
+```
+This will download and build the latest tagged version from GitHub.
+
+#### Specific Release:
+```bash
+go install github.com/Saba101/GoMetaSync/cmd/gometasync@v<version>
+
 ```
 
-This will download and build the latest tagged version from GitHub.
 Once installed, you can run it from anywhere:
-
 ```
 gometasync --help
 ```
