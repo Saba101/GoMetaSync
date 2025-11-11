@@ -1,3 +1,7 @@
+![Go Version](https://img.shields.io/badge/Go-1.23+-00ADD8?logo=go)
+![License](https://img.shields.io/badge/license-MIT-green)
+![Version](https://img.shields.io/github/v/tag/Saba101/GoMetaSync?label=release)
+
 # 🚀 GoMetaSync
 
 > **GoMetaSync** is an open-source tool written in Go that automatically detects database schema drift and keeps your Go structs in sync with live PostgreSQL databases.  
@@ -13,6 +17,25 @@
 <!-- - Packages:
     pgx — PostgreSQL driver
 yaml.v3 — YAML parsing -->
+
+---
+
+## ⚡ Quick Start
+
+```bash
+# 1. Install CLI
+go install github.com/Saba101/GoMetaSync/cmd/gometasync@v1.0.0
+
+# 2. Configure connection (edit configs/dev.yml)
+# 3. Generate snapshot
+gometasync --mode snapshot --config configs/dev.yml --new snapshots/dev.json
+# 4. Detect drift
+gometasync --mode diff --old snapshots/dev.json --new snapshots/dev2.json
+# 5. Generate Go structs
+gometasync --mode generate --new snapshots/dev2.json --out generated_models
+```
+
+---
 
 ---
 
@@ -110,36 +133,49 @@ databases:
 
 ---
 
-## Installation
+## 🧱 Installation
 
-### 1️. Clone the repository
+### Option 1 — Install via Go (Recommended)
+
+GoMetaSync can now be installed globally as a CLI tool:
 
 ```bash
-git clone https://github.com/Saba101/GoMetaSync/cmd/gometasync.git
+go install github.com/Saba101/GoMetaSync/cmd/gometasync@v1.0.1
+```
+
+This will download and build the latest tagged version from GitHub.
+Once installed, you can run it from anywhere:
+
+```
+gometasync --help
+```
+
+### Option 2 — Build from Source (For Contributors)
+
+If you want to run or modify the code manually:
+
+```bash
+git clone https://github.com/Saba101/GoMetaSync.git
 cd GoMetaSync
-```
-
-### 2️. Install dependencies
-
-```
 go mod tidy
+go run cmd/gometasync/main.go --help
 ```
 
-### 3️. Build the CLI
-
-```
-go build -o metasynk cmd/main.go
-./metasynk --help
-```
-
----
-
-## 🧭 Usage
+## 🧭 Usage Examples
 
 ### 1. Generate a Snapshot of Your Database
 
+#### Using package:
+
 ```
-go run cmd/main.go \
+gometasync --mode snapshot \
+  --config configs/dev.yml \
+  --new snapshots/dev-1.json
+```
+
+#### Using CLI:
+```
+go run cmd/gometasync/main.go \
   --mode snapshot \
   --config configs/dev.yml \
   --new snapshots/dev-1.json
@@ -147,8 +183,18 @@ go run cmd/main.go \
 
 ### 2. Detect Schema Drift
 
+#### Using package:
+
 ```
-go run cmd/main.go \
+gometasync --mode diff \
+  --old snapshots/dev-1.json \
+  --new snapshots/dev-2.json
+```
+
+#### Using CLI:
+
+```
+go run cmd/gometasync/main.go \
   --mode diff \
   --old snapshots/dev-1.json \
   --new snapshots/dev-2.json
@@ -156,8 +202,18 @@ go run cmd/main.go \
 
 ### 3. Generate Go Structs
 
+#### Using package:
+
 ```
-go run cmd/main.go \
+gometasync --mode generate \
+  --new snapshots/dev-2.json \
+  --out generated_models
+```
+
+#### Using CLI:
+
+```
+go run cmd/gometasync/main.go \
   --mode generate \
   --new snapshots/dev-2.json \
   --out generated_models
@@ -203,7 +259,7 @@ type Users struct {
 
 If you find this useful, please ⭐ the repo and share feedback!
 
-For collaboration or feature ideas, reach out on LinkedIn: Saba Amin
+For collaboration or feature ideas, reach out on LinkedIn: [Saba Amin](https://www.linkedin.com/in/saba-amin-61635519b)
 
 ---
 
@@ -212,10 +268,3 @@ For collaboration or feature ideas, reach out on LinkedIn: Saba Amin
 GoMetaSync **v1.0.0** — Initial public release (Schema Drift Detection & Struct Generation)
 
 ---
-
----
-
-![Go Version](https://img.shields.io/badge/Go-1.23+-00ADD8?logo=go)
-![License](https://img.shields.io/badge/license-MIT-green)
-
-<!-- ![Build](https://img.shields.io/github/actions/workflow/status/Saba101/GoMetaSync/build.yml?branch=main) -->
