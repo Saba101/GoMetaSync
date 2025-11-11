@@ -140,7 +140,7 @@ databases:
 GoMetaSync can now be installed globally as a CLI tool:
 
 ```bash
-go install github.com/Saba101/GoMetaSync/cmd/gometasync@v1.0.1
+go install github.com/Saba101/GoMetaSync/cmd/gometasync@v1.1.0
 ```
 
 This will download and build the latest tagged version from GitHub.
@@ -263,8 +263,19 @@ For collaboration or feature ideas, reach out on LinkedIn: [Saba Amin](https://w
 
 ---
 
-## 🔖 Version
+# 🔖 Versions
 
-GoMetaSync **v1.0.0** — Initial public release (Schema Drift Detection & Struct Generation)
+### v1.0.1
+- Initial public release: 
+  - Schema Drift Detection 
+  - GO Struct Generation
+
+### ### 🆕 v1.1.0 (November 2025)
+- Added automatic detection of:
+  - Primary Keys, Foreign Keys
+  - Unique and Check Constraints
+  - Indexes (including unique & expression indexes)
+- Enhanced struct generation with PK/FK/constraint tags
+
 
 ---
