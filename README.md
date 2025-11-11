@@ -24,7 +24,7 @@ yaml.v3 — YAML parsing -->
 
 ```bash
 # 1. Install CLI
-go install github.com/Saba101/GoMetaSync/cmd/gometasync@v1.0.0
+go install github.com/Saba101/GoMetaSync/cmd/gometasync@latest
 
 # 2. Configure connection (edit configs/dev.yml)
 # 3. Generate snapshot
