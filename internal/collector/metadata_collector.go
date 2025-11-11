@@ -4,7 +4,7 @@ import (
 	"context"
 	"time"
 
-	"GoMetaSync.com/internal/models"
+	"github.com/Saba101/GoMetaSync/internal/models"
 	"github.com/jackc/pgx/v5"
 )
 

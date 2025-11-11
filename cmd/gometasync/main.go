@@ -4,10 +4,10 @@ import (
 	"flag"
 	"fmt"
 
-	"GoMetaSync.com/internal/collector"
-	"GoMetaSync.com/internal/config"
-	"GoMetaSync.com/internal/generator"
-	"GoMetaSync.com/internal/snapshot"
+	"github.com/Saba101/GoMetaSync/internal/collector"
+	"github.com/Saba101/GoMetaSync/internal/config"
+	"github.com/Saba101/GoMetaSync/internal/generator"
+	"github.com/Saba101/GoMetaSync/internal/snapshot"
 )
 
 func main() {

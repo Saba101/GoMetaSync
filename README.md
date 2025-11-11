@@ -6,6 +6,7 @@
 ---
 
 ## Tech Stack
+
 - Language: Go 1.23+
 - Database: PostgreSQL
 - Serialization: JSON, YAML
@@ -55,14 +56,17 @@ This makes GoMetaSync an excellent fit for:
 
 ❌ Column dropped: datasource_server.public.data_source.secret_key
 
-
 ---
 
 ## ✅ Project Structure
 
 GoMetaSync/
 
-├── cmd/main.go # CLI entrypoint
+GoMetaSync/
+
+├── cmd/
+│ └── gometasync/
+│ └── main.go
 
 ├── internal/
 
@@ -109,17 +113,20 @@ databases:
 ## Installation
 
 ### 1️. Clone the repository
+
 ```bash
-git clone https://github.com/Saba101/GoMetaSync.git
+git clone https://github.com/Saba101/GoMetaSync/cmd/gometasync.git
 cd GoMetaSync
 ```
 
 ### 2️. Install dependencies
+
 ```
 go mod tidy
 ```
 
 ### 3️. Build the CLI
+
 ```
 go build -o metasynk cmd/main.go
 ./metasynk --help
@@ -128,7 +135,9 @@ go build -o metasynk cmd/main.go
 ---
 
 ## 🧭 Usage
+
 ### 1. Generate a Snapshot of Your Database
+
 ```
 go run cmd/main.go \
   --mode snapshot \
@@ -137,6 +146,7 @@ go run cmd/main.go \
 ```
 
 ### 2. Detect Schema Drift
+
 ```
 go run cmd/main.go \
   --mode diff \
@@ -145,6 +155,7 @@ go run cmd/main.go \
 ```
 
 ### 3. Generate Go Structs
+
 ```
 go run cmd/main.go \
   --mode generate \
@@ -153,7 +164,9 @@ go run cmd/main.go \
 ```
 
 ---
+
 ## 🧪 Example Generated Struct
+
 ```go
 // Code generated automatically. DO NOT EDIT.
 package generated_models
@@ -170,6 +183,7 @@ type Users struct {
 ---
 
 ## 🤝 Contributions
+
 1. Pull requests, ideas, and feedback are welcome!
 2. Fork the repository
 3. Create a feature branch (feature/your-idea)
@@ -179,12 +193,14 @@ type Users struct {
 ---
 
 ## 🌟 Acknowledgements
+
 - Inspired by schema management techniques in Superset, Metabase, and dbt
 - Built for Go open-source community
 
-----
+---
 
 ## 📫 Connect
+
 If you find this useful, please ⭐ the repo and share feedback!
 
 For collaboration or feature ideas, reach out on LinkedIn: Saba Amin
@@ -192,4 +208,14 @@ For collaboration or feature ideas, reach out on LinkedIn: Saba Amin
 ---
 
 ## 🔖 Version
+
 GoMetaSync **v1.0.0** — Initial public release (Schema Drift Detection & Struct Generation)
+
+---
+
+---
+
+![Go Version](https://img.shields.io/badge/Go-1.23+-00ADD8?logo=go)
+![License](https://img.shields.io/badge/license-MIT-green)
+
+<!-- ![Build](https://img.shields.io/github/actions/workflow/status/Saba101/GoMetaSync/build.yml?branch=main) -->

@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"os"
 
-	"GoMetaSync.com/internal/models"
+	"github.com/Saba101/GoMetaSync/internal/models"
 )
 
 func SaveSnapshot(path string, snap *models.Snapshot) error {
